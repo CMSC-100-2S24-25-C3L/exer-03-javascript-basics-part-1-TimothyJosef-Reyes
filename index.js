@@ -38,8 +38,19 @@ function validatePassword(password1, password2){
     return true;
 }
 
+function reversePassword(password){
+    let reversed = "";
+
+    for(let i = password.length; i > 0; i--){
+        reversed = reversed + password[i-1];
+    }
+
+    return reversed;
+}
+
 console.log(validatePassword("helloworld", "hello"));
 console.log(validatePassword("hello", "hello"));
 console.log(validatePassword("hello1234", "hello1234"));
 console.log(validatePassword("Hello1234", "Hello1234"));
 console.log(validatePassword("HELLO1234", "HELLO1234"));
+console.log(reversePassword("Hello"));
