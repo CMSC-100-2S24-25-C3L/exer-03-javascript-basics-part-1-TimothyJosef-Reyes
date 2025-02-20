@@ -1,4 +1,9 @@
 function validatePassword(password1, password2){
+    if(typeof password1 != 'string' || typeof password2 != 'string'){
+        password1 = String(password1);
+        password2 = String(password2);
+    }
+
     if(password1 != password2){
         return false;
     }
@@ -39,6 +44,10 @@ function validatePassword(password1, password2){
 }
 
 function reversePassword(password){
+    if(typeof password != 'string'){
+        password = String(password);
+    }
+    
     let reversed = "";
 
     for(let i = password.length; i > 0; i--){
@@ -61,12 +70,15 @@ function storePassword(name, password1, password2){
     return output;
 }
 
+console.log(validatePassword(123456, 123456));
 console.log(validatePassword("helloworld", "hello"));
 console.log(validatePassword("hello", "hello"));
 console.log(validatePassword("hello1234", "hello1234"));
 console.log(validatePassword("Hello1234", "Hello1234"));
 console.log(validatePassword("HELLO1234", "HELLO1234"));
 console.log(reversePassword("HelloWorld"));
+console.log(reversePassword(1234));
+console.log(storePassword(1, "Pass1234", "Pass1234"));
 console.log(storePassword("John", "Pass1234", "Pass1234"));
 console.log(storePassword("John", "Pass123", "Pass123"));
 console.log(storePassword("John", "Pass123", "Pass12345"));
