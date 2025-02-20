@@ -59,11 +59,17 @@ function reversePassword(password){
 
 function storePassword(name, password1, password2){
     let output = new Object();
+    if(typeof name != 'string'){
+        name = String(name);
+    }
     output["name"] = name;
 
     if(validatePassword(password1, password2)){
         output["newpassword"] = reversePassword(password1);
     } else {
+        if(typeof password1 != 'string'){
+            password1 = String(password1);
+        }
         output["newpassword"] = password1;
     }
 
@@ -78,7 +84,7 @@ console.log(validatePassword("Hello1234", "Hello1234"));
 console.log(validatePassword("HELLO1234", "HELLO1234"));
 console.log(reversePassword("HelloWorld"));
 console.log(reversePassword(1234));
-console.log(storePassword(1, "Pass1234", "Pass1234"));
+console.log(storePassword(1, 12345678, 12345678));
 console.log(storePassword("John", "Pass1234", "Pass1234"));
 console.log(storePassword("John", "Pass123", "Pass123"));
 console.log(storePassword("John", "Pass123", "Pass12345"));
